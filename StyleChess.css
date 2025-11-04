@@ -1,0 +1,102 @@
+
+/*Start of ChessStart*/
+.header-medium {
+  font-family: "Kanit", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.header-chess, #CHESS {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  margin-top: -50px;
+  font-family: "Kanit", sans-serif;
+  font-size: 37px; 
+}
+
+
+
+.header-chess img {
+  width: 60px; 
+  height: auto;
+}
+
+.blocks {
+  display: flex;          
+  gap: 40px;              
+  margin-left: 60px;      
+}
+
+.block {
+  background-color: #69923E;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 45px;
+  width: 100px;
+  height: 300px;
+  font-family: "Kanit", sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.block:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.block h2, a{
+    margin-top: -10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+.block p {
+    color: black;
+    text-align: left;
+    margin-top: -10px;
+    margin-right: 0px;
+    margin-left: -10px;
+    font-family: 'Kanit', sans-serif;
+}
+ 
+/*End of ChessStart*/
+/*Start of Basics and History*/
+
+.BasicsHistory h1{
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  font-family: "Kanit", sans-serif;
+  font-size: 44px;
+}
+
+.blockInfo {
+  background-color: #69923E;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 45px;
+  width: 100px;
+  height: 200px;
+  font-family: "Kanit", sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blockInfo h2 {
+    margin-top: -20px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+.blockInfo p {
+    color: black;
+    text-align: left;
+    margin-top: -10px;
+    margin-right: -30px;
+    margin-left: -30px;
+    font-family: 'Kanit', sans-serif;
+}
+img2 {
+  width: 100px;
+  height: 100px;
+  color: black;
+}
