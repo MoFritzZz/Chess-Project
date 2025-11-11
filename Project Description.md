@@ -16,15 +16,10 @@ Wir planen folgende Seiten und Dateien:
 
 - `basic.html` → **Startseite:** kurze Vorstellung, neueste Inhalte und Links zu den anderen Seiten  
 - `regeln.html` → **Regeln:** wie die Figuren ziehen, Sonderzüge und wie man gewinnt  
-- `geschichte.html` → **Geschichte:** kurze Übersicht zur Entstehung und Entwicklung von Schach  
+- `history.html` → **Geschichte:** kurze Übersicht zur Entstehung und Entwicklung von Schach  
 - `styles.css` → **Stylesheet:** gemeinsames CSS für Layout, Farben und Schriftarten, das auf allen Seiten eingebunden wird
 
-## 5. Design und Layout
-Das Design soll **einfach, aber elegant** sein – ähnlich wie ein Schachbrett.  
-Ich möchte **Schwarz, Weiß und Grün** als Hauptfarben verwenden. Die Schrift soll gut lesbar und modern sein.
-
-
-## 6. Meilensteine
+## 5. Meilensteine
 - **HTML-Grundlagen lernen:** am Ende können wir selbst einfache HTML-Seiten schreiben und Inhalte strukturieren (Überschriften, Absätze, Listen, Bilder, Links).  
 - **CSS anwenden:** wir lernen, wie man mit `styles.css` das Aussehen einer Seite verändert (Farben, Schriftarten, Abstände, Navigation).  
 - **Seiten verlinken und strukturieren:** wir verstehen, wie mehrere HTML-Dateien zusammenpassen und wie die Navigation funktioniert.  
