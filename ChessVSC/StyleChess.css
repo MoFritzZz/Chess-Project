@@ -58,7 +58,7 @@
 }
  
 /*End of ChessStart*/
-/*Start of Basics and History*/
+/*Start of Basics and History and Tactics*/
 
 .BasicsHistory h1{
   display: flex;
@@ -67,6 +67,13 @@
   font-family: "Kanit", sans-serif;
   font-size: 44px;
 }
+
+.ContentBlocks {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: nowrap; /* prevents wrapping */
 
 .blockInfo {
   background-color: #69923E;
