@@ -58,14 +58,22 @@
 }
  
 /*End of ChessStart*/
-/*Start of Basics and History*/
+/*Start of Basics and History and Tactics*/
 
 .BasicsHistory h1{
   display: flex;
   align-items: center; 
   justify-content: center; 
-  font-family: "Kanit", sans-serif;
+  font-family:'Kanit', sans-serif; 
   font-size: 44px;
+}
+
+.ContentBlocks {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: nowrap; 
 }
 
 .blockInfo {
@@ -73,8 +81,8 @@
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 30px 45px;
-  width: 100px;
-  height: 200px;
+  width: 130px;
+  height: 250px;
   font-family: "Kanit", sans-serif;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
