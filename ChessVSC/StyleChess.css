@@ -1,3 +1,4 @@
+
 /*Start of ChessStart*/
 .header-medium {
   font-family: "Kanit", sans-serif;
@@ -9,31 +10,29 @@
   display: flex;
   align-items: center; 
   justify-content: center; 
-  margin-top: -3vw;
+  margin-top: -50px;
   font-family: "Kanit", sans-serif;
-  font-size: clamp(20px, 3vw, 31px);
+  font-size: 31px; 
 }
 
 .header-chess img {
-  width: clamp(40px, 5vw, 60px);
+  width: 60px; 
   height: auto;
 }
 
 .blocks {
   display: flex;          
-  gap: clamp(15px, 4vw, 40px);
-  margin-left: clamp(5px, 4vw, 50px);
-  flex-wrap: wrap;
-  justify-content: center;
+  gap: 40px;              
+  margin-left: 60px;      
 }
 
 .block {
   background-color: #69923E;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: clamp(20px, 3vw, 30px) clamp(30px, 4vw, 45px);
-  width: clamp(50px, 8.25vw, 120px);
-  height: clamp(220px, 30vw, 300px);
+  padding: 30px 45px;
+  width: 100px;
+  height: 300px;
   font-family: "Kanit", sans-serif;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -43,28 +42,59 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.block h2, a {
-  margin-top: -10px;
-  color: black;
-  text-align: center;
-  text-decoration: none;
+.block h2, a{
+    margin-top: -10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
 }
-
 .block p {
-  color: black;
-  text-align: left;
-  margin-top: -10px;
-  margin-right: 0px;
-  margin-left: -10px;
-  font-family: 'Kanit', sans-serif;
+    color: black;
+    text-align: left;
+    margin-top: -10px;
+    margin-right: 0px;
+    margin-left: -10px;
+    font-family: 'Kanit', sans-serif;
 }
-
-.border {
-  align-items: left;
-  width: 110%;
-  border-bottom: 20px solid #69923E;
-}
-
+ 
 /*End of ChessStart*/
-
 /*Start of Basics and History*/
+
+.BasicsHistory h1{
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  font-family: "Kanit", sans-serif;
+  font-size: 44px;
+}
+
+.blockInfo {
+  background-color: #69923E;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 45px;
+  width: 100px;
+  height: 200px;
+  font-family: "Kanit", sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blockInfo h2 {
+    margin-top: -20px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+.blockInfo p {
+    color: black;
+    text-align: left;
+    margin-top: -10px;
+    margin-right: -30px;
+    margin-left: -30px;
+    font-family: 'Kanit', sans-serif;
+}
+img2 {
+  width: 100px;
+  height: 100px;
+  color: black;
+}
