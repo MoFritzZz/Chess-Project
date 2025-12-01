@@ -73,7 +73,8 @@
     gap: 40px;
     justify-content: center;
     margin-top: 40px;
-    flex-wrap: nowrap; /* prevents wrapping */
+    flex-wrap: nowrap; 
+}
 
 .blockInfo {
   background-color: #69923E;
