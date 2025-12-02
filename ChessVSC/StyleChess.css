@@ -1,4 +1,19 @@
 
+
+.dark-actice smallBlack h2,
+.dark-active smallBlack p,
+.dark-active block h2,
+.dark-active block p,
+.dark-active {
+    filter: invert(1) hue-rotate(180deg);
+    background-color: #282828;
+}
+
+
+
+.dark-active .darkMode:hower {
+    filter: invert(1) hue-rotate(180deg);
+}
 /*Start of ChessStart*/
 .header-medium {
   font-family: "Kanit", sans-serif;
@@ -14,8 +29,7 @@
   font-family: "Kanit", sans-serif;
   font-size: 31px; 
 }
-
-.header-chess img {
+.der-chess img {
   width: 60px; 
   height: auto;
 }
