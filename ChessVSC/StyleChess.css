@@ -44,8 +44,8 @@
     text-align: center;
 }
 
-.darkmode:hover {
-    background-color: #565755;
+.darkMode:hover {
+    background-color: #dee1d9;
     transform: translateY(10px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
@@ -61,8 +61,8 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   position: absolute;
-  top: 450px;
-  left: 508px;
+  top: 10px;
+  left: 990px;
 } 
 
 .smallBlack:hover {
