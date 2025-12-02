@@ -50,18 +50,19 @@
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
+
 .smallBlack {
   background-color: #69923E;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 170px;
-  height: 80px;
+  width: 214px;
+  height: 60px;
   font-family: "Kanit", sans-serif;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   position: absolute;
-  top: 5px;
-  left: 1030px;
+  top: 450px;
+  left: 508px;
 } 
 
 .smallBlack:hover {
