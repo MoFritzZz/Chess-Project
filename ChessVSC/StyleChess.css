@@ -1,22 +1,16 @@
-
-
-.dark-actice smallBlack h2,
-.dark-active smallBlack p,
-.dark-active block h2,
-.dark-active block p,
 .dark-active {
     filter: invert(1) hue-rotate(180deg);
     background-color: #282828;
 }
 
-
-
-.dark-active .darkMode:hower {
-    filter: invert(1) hue-rotate(180deg);
+.dark-active .darkMode {
+    filter: none !important;
 }
+
+
 /*Start of ChessStart*/
 .header-medium {
-  font-family: "Kanit", sans-serif;
+  font-family: "yes", sans-serif;
   font-weight: 600;
   font-style: normal;
 }
@@ -26,11 +20,11 @@
   align-items: center; 
   justify-content: center; 
   margin-top: -50px;
-  font-family: "Kanit", sans-serif;
+  font-family: "kanit", sans-serif;
   font-size: 31px; 
 }
-.der-chess img {
-  width: 60px; 
+img[alt="ChessLogo"] {
+  width: 70px; 
   height: auto;
 }
 
@@ -40,29 +34,29 @@
   margin-left: 60px;      
 }
 
-.darkMode{
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 170px;
-  height: 80px;
-  font-family: "Kanit", sans-serif;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  position: absolute;
-  top: 5px;
-  left: 40px;
+.darkMode {
+    margin-top: -129px;
+    margin-left: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 160px;
+    height: 70px;
+    font-family: "Kanit", sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.darkMode, h2 {
-    color: black;
-    text-align: center;
+.darkMode h2 {
+    position: relative;
+    top: 15px; 
+    text-align: center; 
 }
 
 .darkMode:hover {
-    background-color: #dee1d9;
-    transform: translateY(10px);
+    color: white;
+    background-color: #282828;
+    transform: translateY(11px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
+} 
 
 
 .smallBlack {
@@ -91,6 +85,7 @@
 }
 
 .block {
+  margin-top : 60px;
   background-color: #69923E;
   border-radius: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
