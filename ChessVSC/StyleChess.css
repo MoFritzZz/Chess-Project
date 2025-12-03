@@ -2,11 +2,9 @@
     filter: invert(1) hue-rotate(180deg);
     background-color: #282828;
 }
-
 .dark-active .darkMode {
     filter: none !important;
 }
-
 
 /*Start of ChessStart*/
 .header-medium {
@@ -35,7 +33,7 @@ img[alt="ChessLogo"] {
 }
 
 .darkMode {
-    margin-top: -129px;
+    margin-top: -115px;
     margin-left: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -45,43 +43,30 @@ img[alt="ChessLogo"] {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.darkMode h2 {
-    position: relative;
-    top: 15px; 
-    text-align: center; 
-}
+.menuBtn {
+    margin-top: -80px;
+    margin-left: 990px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 160px;
+    height: 70px;
+    font-family: "Kanit", sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+} 
 
-.darkMode:hover {
+.darkMode:hover,
+.menuBtn:hover {
     color: white;
     background-color: #282828;
     transform: translateY(11px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-} 
-
-
-.smallBlack {
-  background-color: #69923E;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 214px;
-  height: 60px;
-  font-family: "Kanit", sans-serif;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  position: absolute;
-  top: 10px;
-  left: 990px;
-} 
-
-.smallBlack:hover {
-    background-color: #7fb64d;
-    transform: translateY(10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.smallBlack h2 {
-    color: black;
-    text-align: center;
+.darkMode h2,
+.menuBtn h2 {
+    position: relative;
+    top: 15px; 
+    text-align: center; 
 }
 
 .block {
