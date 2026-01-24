@@ -103,6 +103,40 @@
             background: rgba(0, 0, 0, 0.15);
             margin-top: 40px;
         }
+
+        /* ===== Navigation ===== */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.25);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .nav a.active {
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -112,6 +146,13 @@
         <h1>History of Chess</h1>
         <p>A journey from ancient origins to modern competitive play</p>
     </header>
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="history.html" class="active">History</a>
+        <a href="basics.html">Basics</a>
+        <a href="tactics.html">Tactics</a>
+    </nav>
+
 
     <main>
 
