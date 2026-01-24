@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>History of Chess</title>
+
     <style>
         body {
             margin: 0;
@@ -22,212 +23,320 @@
         }
 
         main {
-            max-width: 950px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 22px 18px 40px;
+            padding: 26px 18px 40px;
         }
 
         h1,
         h2 {
+            margin-top: 0;
             line-height: 1.2;
-        }
-
-        h2 {
-            margin-top: 28px;
-            padding-top: 6px;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .card {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.10);
             border-radius: 12px;
-            padding: 16px 16px;
-            margin: 14px 0;
+            padding: 22px;
+            margin: 22px 0;
         }
 
-        .timeline {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        /* TEXT LINKS – BILD RECHTS */
+        .split {
+            display: flex;
+            gap: 26px;
+            align-items: flex-start;
         }
 
-        .timeline li {
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+        .text {
+            flex: 1.5;
         }
 
-        .timeline li:last-child {
-            border-bottom: none;
+        .media {
+            flex: 1;
+            max-width: 360px;
+            /* PNG GROSSEN-FIX */
+            margin-left: auto;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .tag {
-            display: inline-block;
+        .media img {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            display: block;
+        }
+
+        .media figcaption {
+            padding: 10px 12px;
             font-size: 0.9rem;
-            padding: 2px 10px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            margin-right: 8px;
-            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
         }
 
-        a {
-            color: #9ad1ff;
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .split {
+                flex-direction: column;
+            }
+
+            .media {
+                max-width: 100%;
+                margin-left: 0;
+            }
+
+            .media img {
+                max-width: 100%;
+            }
         }
 
         footer {
             text-align: center;
             padding: 18px;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.7);
             border-top: 1px solid rgba(255, 255, 255, 0.15);
             background: rgba(0, 0, 0, 0.15);
+            margin-top: 40px;
         }
     </style>
 </head>
 
 <body>
+
     <header>
         <h1>History of Chess</h1>
-        <p>A quick journey from its ancient origins to modern competitive play.</p>
+        <p>A journey from ancient origins to modern competitive play</p>
     </header>
 
     <main>
+
+        <!-- WHAT IS CHESS -->
         <section class="card">
             <h2>What is Chess?</h2>
-            <p>
-                Chess is a two-player strategy board game played on an 8x8 grid. Players command armies of pieces
-                with different movement rules, aiming to checkmate the opponent's king—placing it under attack
-                with no legal escape.
-            </p>
-        </section>
 
-        <section class="card">
-            <h2>Origins: India and Chaturanga (c. 6th Century)</h2>
-            <p>
-                Most historians trace chess back to <strong>chaturanga</strong>, a game that emerged in India around
-                the 6th century. Chaturanga included pieces representing different military units and already
-                contained the core idea of a king that must be protected.
-            </p>
-            <p>
-                From India, the game spread through trade routes and cultural contact into Persia, where it evolved
-                into <strong>shatranj</strong>.
-            </p>
-        </section>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Chess is a two-player strategy board game played on an 8×8 grid called a chessboard. Each player
+                        starts with sixteen pieces, and every piece moves in a different way. Because of this, the game
+                        is not about luck, but about thinking ahead and making good decisions.
+                    </p>
+                    <p>
+                        The goal of the game is to checkmate the opponent’s king. This means the king is under attack
+                        and cannot move to a safe square. The king is never actually captured; the game ends as soon as
+                        checkmate is unavoidable.
+                    </p>
+                    <p>
+                        Chess helps players improve concentration, logical thinking, and problem-solving skills. Even
+                        though the basic rules are easy to learn, the game can become very deep and challenging over
+                        time. That is why chess is played by beginners and professionals all around the world, both on
+                        real boards and online.
+                    </p>
+                </div>
 
-        <section class="card">
-            <h2>Persia: Shatranj and the Birth of Classic Terms</h2>
-            <p>
-                In Persia, chaturanga became <strong>shatranj</strong>. Many chess terms and concepts were shaped
-                here.
-                For example, the word <em>“check”</em> is linked to “shah” (king), and <em>“checkmate”</em> is often
-                associated with phrases meaning the king is defeated or helpless.
-            </p>
-            <p>
-                Shatranj was played widely in the Islamic world, where scholars wrote early chess puzzles, analysis,
-                and strategy lessons.
-            </p>
-        </section>
+                <figure class="media">
+                    <img src="assets/img/portfolio/Real_board.png" alt="8x8 chessboard top-down">
 
-        <section class="card">
-            <h2>Arrival in Europe (c. 9th-12th Centuries)</h2>
-            <p>
-                Chess reached Europe through multiple paths, including Iberia (via Islamic Spain), trade routes,
-                and contact during the Crusades. It became popular in courts and among the nobility, eventually
-                spreading to wider society.
-            </p>
-            <p>
-                Over time, piece shapes, names, and rules adapted to local cultures—helping the game take on a
-                distinctly European identity.
-            </p>
-        </section>
-
-        <section class="card">
-            <h2>The “Queen's Chess” Revolution (Late 15th Century)</h2>
-            <p>
-                One of the biggest changes in chess history happened in Europe around the late 1400s: the rules were
-                adjusted to make the game faster and more tactical. The most dramatic shift was the increased power
-                of the <strong>queen</strong> and <strong>bishop</strong>.
-            </p>
-            <p>
-                These changes transformed chess into a sharper, more dynamic contest—closer to the game we recognize
-                today.
-            </p>
-            <div>
-                <span class="tag">Faster games</span>
-                <span class="tag">Stronger queen</span>
-                <span class="tag">Modern tactics</span>
+                </figure>
             </div>
         </section>
 
+        <!-- ORIGINS -->
         <section class="card">
-            <h2>Early Theory and Printed Books (16th-18th Centuries)</h2>
-            <p>
-                As printing spread, chess books and analysis became more common. Writers documented openings,
-                endgames, and famous match ideas. Chess cafés also rose in popularity, especially in major European
-                cities,
-                becoming hubs for regular play and discussion.
-            </p>
+            <h2>Origins: Chaturanga (6th Century)</h2>
+
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Chess comes from an ancient Indian game called <strong> Chaturanga</strong>, which was played
+                        around the 6th
+                        century. The name refers to four military units: <strong>infantry, cavalry, elephants, and
+                            chariots</strong>,
+                        which later became the chess pieces we know today.
+                    </p>
+                    <p>
+                        Chaturanga already focused on <strong>strategy and planning</strong>, especially on protecting
+                        the king. This
+                        main idea is still the most important rule in modern chess.
+                    </p>
+                    <p>
+                        Over time, Chaturanga spread to other regions and slowly changed. The rules became clearer, and
+                        the pieces developed new movements. Even though chess looks very different today, its basic idea
+                        of strategy and king safety started with Chaturanga.
+                    </p>
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/chaturanga.png" alt="Chaturanga illustration">
+                    <figcaption>Chaturanga - the ancestor of chess</figcaption>
+                </figure>
+            </div>
         </section>
 
+        <!-- PERSIA -->
         <section class="card">
-            <h2>Modern Competitive Chess (19th Century)</h2>
-            <p>
-                The 1800s saw chess become organized and professional. International tournaments began, and
-                chess clocks were introduced to manage time. Players developed recognizable styles and more
-                systematic
-                opening preparation.
-            </p>
-            <p>
-                The first widely recognized official <strong>World Chess Champion</strong> was
-                <strong>Wilhelm Steinitz</strong> (often dated from 1886), who emphasized positional principles that
-                shaped modern strategy.
-            </p>
+            <h2>Persia and Shatranj</h2>
+
+            <div class="split">
+                <div class="text">
+                    <p>
+                        After spreading from India, chess reached <strong>Persia</strong>, where it became known as
+                        <strong>Shatranj</strong>. The game became very popular and was played by people of all ages,
+                        especially among scholars and nobility.
+                    </p>
+
+                    <p>
+                        Shatranj was similar to <strong>Chaturanga</strong>, but the rules slowly became clearer and
+                        more organized.
+                        Players started to think more deeply about strategy, planning, and how to protect the king.
+                        Many of the basic ideas of modern chess were improved during this time.
+                    </p>
+
+                    <p>
+                        This period is also important because the first chess writings appeared.
+                        People wrote about good moves, common mistakes, and interesting positions.
+                        These texts helped spread chess knowledge to other regions.
+                    </p>
+
+                    <p>
+                        Many chess words we still use today come from <strong>Persian</strong>.
+                        The word <strong>“check”</strong> comes from <strong>shah</strong>, which means king.
+                        <strong>“Checkmate”</strong> comes from phrases meaning that the king is trapped and cannot
+                        escape.
+                    </p>
+
+
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/shatranj.png" alt="Shatranj set">
+                    <figcaption>Persian Shatranj set</figcaption>
+                </figure>
+            </div>
         </section>
 
+        <!-- EUROPE -->
         <section class="card">
-            <h2>The 20th Century: Schools of Thought & Global Champions</h2>
-            <p>
-                Chess theory expanded rapidly. Competing philosophies—such as classical, hypermodern, and Soviet-era
-                training approaches—pushed the game forward. World championships became major international events.
-            </p>
-            <p>
-                Legendary champions (including Capablanca, Alekhine, Botvinnik, Fischer, Karpov, and Kasparov) each
-                contributed new ideas and raised the level of play.
-            </p>
+            <h2>Chess in Medieval Europe</h2>
+
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Chess arrived in <strong>Europe</strong> between the 9th and 12th centuries,
+                        mainly through trade routes and contact with the Islamic world,
+                        especially Islamic Spain. From there, the game slowly spread
+                        across the rest of Europe.
+                    </p>
+
+                    <p>
+                        During the Middle Ages, chess became very popular among
+                        <strong>nobility and royalty</strong>. It was often played in castles and
+                        royal courts and was seen as a game that required intelligence,
+                        patience, and strategic thinking.
+                    </p>
+
+                    <p>
+                        Chess was also used as a teaching tool. People believed it helped
+                        train the mind, improve decision-making, and teach important values
+                        such as planning ahead and careful thinking. Over time, the game
+                        became a common part of European culture.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/medievel.png" alt="Medieval chess">
+                    <figcaption>Chess in medieval European courts</figcaption>
+                </figure>
+            </div>
         </section>
 
+        <!-- MODERN RULES -->
         <section class="card">
-            <h2>The Computer & Internet Era (Late 20th-21st Century)</h2>
-            <p>
-                Computers revolutionized chess preparation, analysis, and training. Game databases made it easy to
-                study
-                millions of positions. In the internet era, online chess platforms and streaming introduced chess to
-                huge
-                global audiences, while engines reshaped how players evaluate positions.
-            </p>
-            <p>
-                Today, chess thrives both over-the-board and online, ranging from casual games to elite tournaments
-                with
-                worldwide followings.
-            </p>
+            <h2>The Birth of Modern Chess</h2>
+
+            <div class="split">
+                <div class="text">
+                    <p>
+                        In the late <strong>15th century</strong>, important rule changes transformed chess
+                        into a faster and more exciting game. The queen became the most powerful piece,
+                        and bishops were allowed to move across the board over long distances.
+                    </p>
+
+                    <p>
+                        These changes made games more dynamic and tactical. Players could attack earlier,
+                        create stronger threats, and finish games more quickly than before. Chess became
+                        less slow and more focused on active play.
+                    </p>
+
+                    <p>
+                        Because of these new rules, chess began to spread even faster across <strong>Europe</strong>.
+                        The game we recognize today was largely formed during this time, and most modern
+                        rules are still based on these changes.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/art_painting.png" alt="Modern chess rules">
+                    <figcaption>Renaissance chess painting</figcaption>
+                </figure>
+            </div>
         </section>
 
+        <!-- MODERN ERA -->
         <section class="card">
-            <h2>Quick Timeline</h2>
-            <ul class="timeline">
-                <li><strong>c. 6th century:</strong> Chaturanga in India</li>
-                <li><strong>c. 7th-10th centuries:</strong> Shatranj in Persia and the Islamic world</li>
-                <li><strong>c. 9th-12th centuries:</strong> Chess spreads through Europe</li>
-                <li><strong>Late 15th century:</strong> “Queen's chess” rule changes (modern movement powers)</li>
-                <li><strong>19th century:</strong> Tournaments, clocks, and world championship era begins</li>
-                <li><strong>Late 20th century:</strong> Computers reshape analysis and training</li>
-                <li><strong>21st century:</strong> Online chess boom and global streaming culture</li>
-            </ul>
+            <h2>Chess Today</h2>
+
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Today, chess is played all over the <strong>world</strong>, both over the board
+                        and online. Players can compete in real tournaments or play against opponents
+                        from other countries using the internet.
+                    </p>
+
+                    <p>
+                        Computers and <strong>chess engines</strong> have changed the way people learn
+                        and play chess. Players use engines to analyze games, find mistakes, and prepare
+                        openings. This makes it easier for beginners to improve and for professionals
+                        to study at a very high level.
+                    </p>
+
+                    <p>
+                        Chess is also popular on <strong>streaming platforms</strong> and social media,
+                        where people watch games, learn from videos, and follow famous players. Because
+                        of this, chess has reached a larger audience than ever before.
+                    </p>
+
+                    <p>
+                        Even after many centuries, chess remains one of the most popular and respected
+                        strategy games in the world.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/board.png" alt="Online chess">
+                    <figcaption>Online and computer chess</figcaption>
+                </figure>
+            </div>
         </section>
+
     </main>
 
     <footer>
-        <p>Made as a simple HTML page — background set to <code>rgb(52, 52, 52)</code>.</p>
+        <p>
+            Chess History
+        </p>
     </footer>
+
 </body>
+
+</html>
