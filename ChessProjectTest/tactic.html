@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Tactics (Beginner)</title>
+
+    <style>
+        :root {
+            --bg: rgb(52, 52, 52);
+            --text: #f2f2f2;
+            --muted: rgba(255, 255, 255, 0.78);
+            --card: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.12);
+            --border2: rgba(255, 255, 255, 0.16);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            --radius: 16px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 30px 18px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 26px 18px 40px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 26px;
+            margin: 18px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .split {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .text {
+            flex: 1;
+            max-width: 720px;
+            font-size: 1.03rem;
+        }
+
+        .media {
+            flex: 0 0 240px;
+            max-width: 240px;
+            margin-left: auto;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border2);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .media img {
+            width: 240px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .media figcaption {
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(0, 0, 0, 0.30);
+        }
+
+        .note {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(0, 0, 0, 0.20);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+
+        ul {
+            margin: 10px 0 0 18px;
+        }
+
+        @media (max-width: 768px) {
+            .split {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .media {
+                max-width: 100%;
+                flex: 0 0 auto;
+                margin-left: 0;
+            }
+
+            .media img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.18);
+            margin-top: 36px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Chess Tactics</h1>
+    <p>4 important tactics every beginner should know</p>
+</header>
+
+<main>
+
+    <!-- INTRO -->
+    <section class="card">
+        <h2>What are tactics?</h2>
+        <div class="split">
+            <div class="text">
+                <p>
+                    In chess, <strong>tactics</strong> are short combinations that help you win material
+                    or create checkmate threats. They usually work because the opponent makes a mistake.
+                </p>
+                <p>
+                    A tactic often appears when a piece is not protected or when the opponent’s king
+                    is poorly defended.
+                </p>
+                <p>
+                    Beginners do not need to know many tactics.
+                    Learning just a few basic ideas already makes a big difference.
+                </p>
+                <div class="note">
+                    Tip: Always look for <strong>checks</strong>, <strong>captures</strong>, and
+                    <strong>threats</strong>. These often lead to tactics.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORK -->
+    <section class="card">
+        <h2>1. Fork</h2>
+        <div class="split">
+            <div class="text">
+                <p>
+                    A <strong>fork</strong> is a move that attacks two or more pieces at the same time.
+                    The opponent usually cannot save all attacked pieces.
+                </p>
+                <p>
+                    Forks are very common with the <strong>knight</strong>, because its movement is hard
+                    to predict. However, any piece can create a fork.
+                </p>
+                <p>
+                    Forks are especially strong when one of the attacked pieces is the king,
+                    because the king must respond to check.
+                </p>
+                <ul>
+                    <li>Best targets: king + queen or rook</li>
+                    <li>Always check if your forking piece is protected</li>
+                </ul>
+            </div>
+
+            <figure class="media">
+                <img src="assets/img/portfolio/fork.png" alt="Fork example">
+                <figcaption>Fork: one move attacks two pieces.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- PIN -->
+    <section class="card">
+        <h2>2. Pin</h2>
+        <div class="split">
+            <div class="text">
+                <p>
+                    A <strong>pin</strong> happens when a piece cannot move without exposing a more
+                    valuable piece behind it.
+                </p>
+                <p>
+                    The strongest pin is when a piece is pinned to the <strong>king</strong>.
+                    This piece usually cannot move at all.
+                </p>
+                <p>
+                    Even though the pinned piece remains on the board, it becomes much less useful.
+                </p>
+                <ul>
+                    <li>Common pin pieces: bishops and rooks</li>
+                    <li>Pins are great for building pressure</li>
+                </ul>
+            </div>
+
+            <figure class="media">
+                <img src="assets/img/portfolio/pin.png" alt="Pin example">
+                <figcaption>Pin: moving the piece would lose something valuable.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- SKEWER -->
+    <section class="card">
+        <h2>3. Skewer</h2>
+        <div class="split">
+            <div class="text">
+                <p>
+                    A <strong>skewer</strong> is similar to a pin, but the stronger piece is attacked first.
+                    When it moves away, the weaker piece behind it is lost.
+                </p>
+                <p>
+                    Skewers are most effective on open lines, such as files and diagonals.
+                </p>
+                <p>
+                    This tactic often appears later in the game when the board is less crowded.
+                </p>
+                <div class="note">
+                    Simple idea: Force a valuable piece to move, then win the piece behind it.
+                </div>
+            </div>
+
+            <figure class="media">
+                <img src="assets/img/portfolio/skewer.png" alt="Skewer example">
+                <figcaption>Skewer: front piece moves, back piece falls.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- DISCOVERED ATTACK -->
+    <section class="card">
+        <h2>4. Discovered Attack</h2>
+        <div class="split">
+            <div class="text">
+                <p>
+                    A <strong>discovered attack</strong> happens when one piece moves away
+                    and reveals an attack from a piece behind it.
+                </p>
+                <p>
+                    A very strong version is a <strong>discovered check</strong>,
+                    because the opponent must respond to the check immediately.
+                </p>
+                <p>
+                    Discovered attacks are powerful because they create two threats at once.
+                </p>
+                <ul>
+                    <li>Common with rooks, bishops, and the queen</li>
+                    <li>Best when the moved piece also creates a threat</li>
+                </ul>
+            </div>
+
+            <figure class="media">
+                <img src="assets/img/portfolio/discovered_attack.png" alt="Discovered attack example">
+                <figcaption>Discovered attack: move one piece, reveal another attack.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- TRAINING -->
+    <section class="card">
+        <h2>Quick Training Tips</h2>
+        <div class="split">
+            <div class="text">
+                <p>
+                    To improve at tactics, it is better to train a little every day
+                    instead of playing very long sessions.
+                </p>
+                <p>
+                    Over time, tactical patterns become familiar and easier to spot.
+                </p>
+                <ul>
+                    <li>Solve 5–10 puzzles per day</li>
+                    <li>Ask: <strong>Is anything hanging?</strong></li>
+                    <li>Look for <strong>checks, captures, threats</strong></li>
+                </ul>
+                <div class="note">
+                    With practice, tactics will start appearing naturally in your games.
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Chess Tactics · Beginner level · Same layout as other pages</p>
+</footer>
+
+</body>
+</html>
