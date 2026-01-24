@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics of Chess</title>
+
+    <style>
+        :root {
+            --bg: rgb(52, 52, 52);
+            --text: #f2f2f2;
+            --muted: rgba(255, 255, 255, 0.78);
+            --card: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.12);
+            --border2: rgba(255, 255, 255, 0.16);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            --radius: 16px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 30px 18px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+        }
+
+        header p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 26px 18px 40px;
+        }
+
+        h2 {
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 26px;
+            margin: 18px 0;
+            box-shadow: var(--shadow);
+        }
+
+        /* Text links / Bild rechts */
+        .split {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .text {
+            flex: 1;
+            max-width: 720px;
+            /* wirkt weniger "leer" */
+            font-size: 1.03rem;
+        }
+
+        /* Bildbox: fix 240px, sauber */
+        .media {
+            flex: 0 0 240px;
+            max-width: 240px;
+            margin-left: auto;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border2);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .media img {
+            width: 240px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .media figcaption {
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(0, 0, 0, 0.30);
+        }
+
+        /* kleine Info-Box im Text */
+        .note {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(0, 0, 0, 0.20);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+
+        /* Listen etwas schöner */
+        ul {
+            margin: 10px 0 0 18px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .split {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .media {
+                max-width: 100%;
+                flex: 0 0 auto;
+                margin-left: 0;
+            }
+
+            .media img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.18);
+            margin-top: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basics of Chess</h1>
+        <p>Simple rules, piece moves, and the main goal</p>
+    </header>
+
+    <main>
+
+        <!-- GOAL -->
+        <section class="card">
+            <h2>The Goal of Chess</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Chess is a two-player strategy game where each player tries to outthink the other.
+                        The main goal is to <strong>checkmate</strong> the opponent’s king.
+                    </p>
+
+                    <p>
+                        <strong>Checkmate</strong> means that the king is under attack and there is
+                        <strong>no legal move</strong> to escape. The king cannot move away, the attack
+                        cannot be blocked, and the attacking piece cannot be captured.
+                    </p>
+
+                    <p>
+                        The king is never actually captured in chess. As soon as checkmate is forced,
+                        the game ends immediately and the attacking player wins.
+                    </p>
+
+                    <p>
+                        During the game, players often put the king in <strong>check</strong>.
+                        This is a warning that the king is in danger and must be protected on the next move.
+                    </p>
+
+                    <div class="note">
+                        Tip: If your king is in <strong>check</strong>, you must react immediately.
+                        You can move the king, block the attack, or capture the attacking piece.
+                    </div>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/checkmate.png" alt="Checkmate example">
+                    <figcaption>Example: checkmate ends the game.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- BOARD -->
+        <section class="card">
+            <h2>The Chessboard</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Chess is played on a square <strong>8×8 board</strong> with a total of 64 squares.
+                        The squares alternate between light and dark colors.
+                    </p>
+
+                    <p>
+                        A simple but important setup rule is that the
+                        <strong>bottom-right square must always be light</strong>.
+                        If the board is placed incorrectly, the game setup will be wrong.
+                    </p>
+
+                    <p>
+                        Each player starts on their own side of the board.
+                        The player with the white pieces always makes the <strong>first move</strong>,
+                        which is considered a small advantage.
+                    </p>
+
+                    <p>
+                        The chessboard can also be described using <strong>coordinates</strong>.
+                        Files are labeled from <strong>a to h</strong>, and ranks are numbered from
+                        <strong>1 to 8</strong>.
+                    </p>
+
+                    <div class="note">
+                        Using coordinates helps players describe moves, learn openings,
+                        and understand chess diagrams more easily.
+                    </div>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/Real_board.png" alt="Chessboard">
+                    <figcaption>Board setup: light square on bottom-right.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- PIECES OVERVIEW -->
+        <section class="card">
+            <h2>Pieces at the Start</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        Each player begins with <strong>16 pieces</strong>:
+                        1 king, 1 queen, 2 rooks, 2 bishops, 2 knights, and 8 pawns.
+                    </p>
+                    <p>
+                        Pieces have different strengths. In general, the queen is the strongest, pawns are the weakest,
+                        but pawns can become very powerful later in the game.
+                    </p>
+                    <ul>
+                        <li><strong>King</strong>: most important piece (if it gets checkmated, you lose)</li>
+                        <li><strong>Queen</strong>: strongest attacker and defender</li>
+                        <li><strong>Rooks/Bishops/Knights</strong>: main fighting pieces</li>
+                        <li><strong>Pawns</strong>: small steps, big impact</li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- PIECE MOVES: PAWN -->
+        <section class="card">
+            <h2>Pawn</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        The <strong>pawn</strong> is the smallest and most common piece in chess. It moves forward one
+                        square,
+                        but captures diagonally. On its very first move, a pawn may move two squares forward.
+                    </p>
+
+                    <p>
+                        Pawns cannot move backward, which means every pawn move is important. Even though pawns seem
+                        weak,
+                        they play a huge role in controlling space and protecting other pieces.
+                    </p>
+
+                    <p>
+                        If a pawn reaches the last rank on the board, it can be promoted into another piece,
+                        usually a queen. This makes pawns very dangerous in the endgame.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/pawn.png" alt="Pawn move">
+                    <figcaption>Pawn: forward move, diagonal capture.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- KNIGHT -->
+        <section class="card">
+            <h2>Knight</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        The <strong>knight</strong> moves in an L-shape: two squares in one direction and then one
+                        square to the side.
+                        It is the only piece that can jump over other pieces.
+                    </p>
+
+                    <p>
+                        Knights are very useful in crowded positions where many pieces block the board.
+                        They can attack pieces that seem far away and create unexpected threats.
+                    </p>
+
+                    <p>
+                        Because the knight’s move is unique, beginners should practice it often to avoid mistakes.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/horse.png" alt="Knight move">
+                    <figcaption>Knight: L-shape and can jump.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- BISHOP -->
+        <section class="card">
+            <h2>Bishop</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        The <strong>bishop</strong> moves diagonally across the board and can travel many squares in one
+                        move.
+                        Each bishop always stays on the same color square for the entire game.
+                    </p>
+
+                    <p>
+                        Bishops are strong when the board is open and long diagonals are available.
+                        They are especially powerful when working together as a pair.
+                    </p>
+
+                    <p>
+                        Good bishop placement can put pressure on the opponent and control important squares.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/bishop.png" alt="Bishop move">
+                    <figcaption>Bishop: diagonal movement.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ROOK -->
+        <section class="card">
+            <h2>Rook</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        The <strong>rook</strong> moves in straight lines: up, down, left, and right.
+                        It is a very strong piece, especially later in the game.
+                    </p>
+
+                    <p>
+                        Rooks work best on open files, where no pawns are blocking their path.
+                        They are often used to control the board and attack important targets.
+                    </p>
+
+                    <p>
+                        Two rooks working together are very powerful and can easily dominate open positions.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/tower.png" alt="Rook move">
+                    <figcaption>Rook: straight-line movement.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- QUEEN -->
+        <section class="card">
+            <h2>Queen</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        The <strong>queen</strong> is the strongest piece on the board.
+                        She can move like a rook and a bishop combined.
+                    </p>
+
+                    <p>
+                        Because the queen is so powerful, losing her early can be a big problem.
+                        Beginners should be careful not to move the queen too early in the game.
+                    </p>
+
+                    <p>
+                        The queen is excellent for attacking, defending, and finishing games.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/queen.png" alt="Queen move">
+                    <figcaption>Queen: rook + bishop movement.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- KING -->
+        <section class="card">
+            <h2>King</h2>
+            <div class="split">
+                <div class="text">
+                    <p>
+                        The <strong>king</strong> is the most important piece in chess.
+                        It moves one square in any direction.
+                    </p>
+
+                    <p>
+                        Even though the king is not very strong early in the game, protecting it is the main goal.
+                        If the king is checkmated, the game is over.
+                    </p>
+
+                    <p>
+                        In the endgame, the king becomes an active piece and helps support pawns
+                        and control important squares.
+                    </p>
+
+                </div>
+
+                <figure class="media">
+                    <img src="assets/img/portfolio/king.png" alt="King move">
+                    <figcaption>King: one square in any direction.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- SIMPLE RULES -->
+        <section class="card">
+            <h2>Quick Beginner Tips</h2>
+            <div class="split">
+                <div class="text">
+                    <p>Here are a few simple tips that help beginners play better:</p>
+                    <ul>
+                        <li>Try to control the <strong>center</strong> (middle squares).</li>
+                        <li>Develop your pieces: knights and bishops before moving the same piece many times.</li>
+                        <li>Keep your king safe (castle when you learn it).</li>
+                        <li>Don’t hang pieces: always check if a piece is defended.</li>
+                    </ul>
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Basics</code></p>
+    </footer>
+
+</body>
+
+</html>
