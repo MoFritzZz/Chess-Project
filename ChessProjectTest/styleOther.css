@@ -18,6 +18,21 @@
             margin: 0 auto;
             padding: 26px 18px 40px;
         }
+        .mainfont {
+            font-family: 'Arial', sans-serif; /* Replace with exact font if known */
+            font-weight: 800;                 /* Bold */
+            font-size: 29px;                  /* Adjust size as needed */
+            color: #FFFFFF;                   /* White text */
+            text-transform: uppercase;        /* All caps */
+            letter-spacing: 2px;              /* Slight spacing between letters */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Subtle shadow for depth */
+            background-color: #2C2C2C;        /* Dark background similar to the image */
+            padding: 10px 20px;               /* Optional padding */
+            display: inline-block;    
+            text-decoration: none;        /* Ensures proper sizing */
+        }
+
+        
 
         h1,
         h2 {
