@@ -14,10 +14,12 @@ Die Website erklärt die Regeln leicht verständlich und gibt Tipps, damit man d
 ## 4. Aufbau der Website
 Wir planen folgende Seiten und Dateien:
 
-- start.html : **Startseite:** dient als Main fenster zum Überblick verschaffen. 
-- regeln.html : **Regeln:** wie die Figuren ziehen, Sonderzüge und wie man gewinnt  
-- history.html : **Geschichte:** kurze Übersicht zur Entstehung und Entwicklung von Schach  
+- start.html : **index.html:** dient als Main fenster zum Überblick verschaffen. 
+- basics.html : **Grundlagen:** Die Grundlagen von Schach.
+- history.html : **Geschichte:** kurze Übersicht zur Entstehung und Entwicklung von Schach.
+- tactics.html : **Taktiken:** Verschiedenen einfache taktiken von schach.  
 - styles.css : **Stylesheet:** gemeinsames CSS für Layout, Farben und Schriftarten, das auf allen Seiten eingebunden wird
+Später noch Playground und andere Minigames
 
 ## 5. Meilensteine
 - **HTML-Grundlagen lernen:** am Ende können wir selbst einfache HTML-Seiten schreiben und Inhalte strukturieren (Überschriften, Absätze, Listen, Bilder, Links).  
