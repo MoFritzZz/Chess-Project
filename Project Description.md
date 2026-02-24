@@ -19,6 +19,7 @@ Wir planen folgende Seiten und Dateien:
 - history.html : **Geschichte:** kurze Übersicht zur Entstehung und Entwicklung von Schach.
 - tactics.html : **Taktiken:** Verschiedenen einfache taktiken von schach.  
 - styles.css : **Stylesheet:** gemeinsames CSS für Layout, Farben und Schriftarten, das auf allen Seiten eingebunden wird
+
 Später noch Playground und andere Minigames
 
 ## 5. Meilensteine
