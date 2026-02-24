@@ -12912,9 +12912,9 @@ html {
 
 
 #mainNav {
-    background: rgba(0, 0, 0, 0.25) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 14px 18px;
+background: #2d5a29 !important;
+border-bottom: 1px solid #ffffff;
+padding: 14px 18px;
 }
 
 #mainNav .navbar-collapse {
