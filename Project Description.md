@@ -4,8 +4,8 @@
 **Chess Helper**
 
 ## 2. Projektidee
-Meine Website geht über das Thema **Schach**. Ich möchte zeigen, wie das Spiel funktioniert, welche Regeln es gibt und wer die bekanntesten Schachspieler sind.
-Ich habe das Thema gewählt, weil ich Schach spannend finde. Es ist ein Spiel, bei dem man viel nachdenken muss, und es hilft, sich besser zu konzentrieren.
+Meine Website geht über das Thema **Schach**. Ich möchte zeigen, wie das Spiel funktioniert, welche Regeln es gibt und welche Taktiken es gibt.
+Wir haben das Thema gewählt, weil wir Schach spannend finden. Es ist ein Spiel, bei dem man viel nachdenken muss, und es hilft, seine kognitiven Fähigkeiten zu verbessern.
 
 ## 3. Zielgruppe
 Die Website ist vor allem für **Schüler und Anfänger**, die Schach lernen oder besser werden wollen.  
@@ -14,7 +14,7 @@ Die Website erklärt die Regeln leicht verständlich und gibt Tipps, damit man d
 ## 4. Aufbau der Website
 Wir planen folgende Seiten und Dateien:
 
-- start.html : **index.html:** dient als Main fenster zum Überblick verschaffen. 
+- index.html : **index.html:** dient als Main fenster zum Überblick verschaffen. 
 - basics.html : **Grundlagen:** Die Grundlagen von Schach.
 - history.html : **Geschichte:** kurze Übersicht zur Entstehung und Entwicklung von Schach.
 - tactics.html : **Taktiken:** Verschiedenen einfache taktiken von schach.  
