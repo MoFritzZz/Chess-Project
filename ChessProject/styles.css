@@ -1,4 +1,11 @@
 @charset "UTF-8";
+
+#portfolio,
+#games,
+#about,
+.footer {
+    border-top: 2px solid white;
+}
 /* Spinner Loading */
 /*Loading Screen */
 #loader {
@@ -12732,7 +12739,7 @@ html {
   font-weight: 700;
 }
 
-#mainNav .navbar-brand {
+#mainNav .navbar-brand { /*das machts weiß glaube */
   color: #fff;
 }
 
@@ -12915,6 +12922,7 @@ html {
 background: #2d5a29 !important;
 border-bottom: 1px solid #ffffff;
 padding: 14px 18px;
+
 }
 
 #mainNav .navbar-collapse {
