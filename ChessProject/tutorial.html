@@ -1,87 +1,160 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schach Grundlagen Tutorial</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .board { display: grid; grid-template-columns: repeat(8, 1fr); width: 400px; }
-        .square { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; }
-        .white { background-color: #fff; }
-        .black { background-color: #000; color: #fff; }
-        .piece { font-size: 24px; cursor: pointer; }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            color: #4a2c2c;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            width: 400px;
+            border: 2px solid #4a2c2c;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .square {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .white {
+            background-color: #eee;
+        }
+
+        .black {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .piece {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .piece:hover {
+            transform: scale(1.2);
+        }
+
+        .info {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
 </head>
+
 <body>
 
-<h1>Schach Grundlagen Tutorial</h1>
-<p>Hier lernst du die Grundzüge des Schachspiels!</p>
+    <h1>Schach Grundlagen Tutorial</h1>
+    <p>Hier lernst du die Grundzüge des Schachspiels und kannst sie direkt ausprobieren!</p>
 
-<h2>Schachbrett</h2>
-<div class="board" id="chessboard"></div>
+    <h2>Schachbrett</h2>
+    <div class="board" id="chessboard"></div>
 
-<h2>Schachfiguren</h2>
-<p>Die Figuren sind:</p>
-<ul>
-    <li>♔ König</li>
-    <li>♕ Dame</li>
-    <li>♖ Turm</li>
-    <li>♗ Läufer</li>
-    <li>♘ Springer</li>
-    <li>♙ Bauer</li>
-</ul>
+    <div class="info">
+        <h2>Schachfiguren und ihre Bewegungen</h2>
+        <ul style="list-style-type: none; padding: 0;">
+            <li><strong>♔ König:</strong> Kann ein Feld in jede Richtung ziehen.</li>
+            <li><strong>♕ Dame:</strong> Kann beliebig viele Felder in jede Richtung ziehen.</li>
+            <li><strong>♖ Turm:</strong> Kann beliebig viele Felder horizontal oder vertikal ziehen.</li>
+            <li><strong>♗ Läufer:</strong> Kann beliebig viele Felder diagonal ziehen.</li>
+            <li><strong>♘ Springer:</strong> Zieht in einem "L"-förmigen Muster.</li>
+            <li><strong>♙ Bauer:</strong> Zieht ein Feld vorwärts, schlägt diagonal.</li>
+        </ul>
+    </div>
 
-<h2>Bewege die Figuren</h2>
-<p>Klicke auf eine Figur, um sie zu bewegen!</p>
+    <h2>Bewege die Figuren</h2>
+    <p>Klicke auf eine Figur, um sie auszuwählen, und klicke dann auf ein Feld, um sie zu bewegen!</p>
 
-<script>
-    const board = document.getElementById('chessboard');
-    const pieces = [
-        '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖',
-        '♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙',
-        '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '',
-        '', '', '', '', '', '', '', '',
-        '♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟',
-        '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'
-    ];
-    
-    // Erstelle das Schachbrett
-    function createBoard() {
-        for (let i = 0; i < 64; i++) {
-            const square = document.createElement('div');
-            square.className = (Math.floor(i / 8) + i) % 2 === 0 ? 'square white' : 'square black';
-            square.innerHTML = pieces[i] ? `<span class="piece">${pieces[i]}</span>` : '';
-            square.addEventListener('click', () => selectPiece(i));
-            board.appendChild(square);
+    <div class="footer">© 2026 Nostalgisches Schach Tutorial</div>
+
+    <script>
+        const board = document.getElementById('chessboard');
+        const pieces = [
+            '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖',
+            '♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙',
+            '', '', '', '', '', '', '', '',
+            '', '', '', '', '', '', '', '',
+            '', '', '', '', '', '', '', '',
+            '', '', '', '', '', '', '', '',
+            '♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟',
+            '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'
+        ];
+
+        function createBoard() {
+            for (let i = 0; i < 64; i++) {
+                const square = document.createElement('div');
+                square.className = (Math.floor(i / 8) + i) % 2 === 0 ? 'square white' : 'square black';
+                square.innerHTML = pieces[i] ? `<span class="piece">${pieces[i]}</span>` : '';
+                square.addEventListener('click', () => selectPiece(i));
+                board.appendChild(square);
+            }
         }
-    }
 
-    let selectedPiece = null;
+        let selectedPiece = null;
 
-    // Funktion zum Auswählen einer Figur
-    function selectPiece(index) {
-        const piece = pieces[index];
-        if (piece) {
-            if (selectedPiece === null) {
-                selectedPiece = index;
-                alert(`Du hast die Figur ${piece} ausgewählt!`);
+        function selectPiece(index) {
+            const piece = pieces[index];
+            if (piece) {
+                if (selectedPiece === null) {
+                    selectedPiece = index;
+                    alert(`Du hast die Figur ${piece} ausgewählt! Klicke auf ein Feld, um sie zu bewegen.`);
+                } else {
+                    if (isValidMove(selectedPiece, index)) {
+                        pieces[index] = pieces[selectedPiece];
+                        pieces[selectedPiece] = '';
+                        selectedPiece = null;
+                        createBoard(); // Aktualisiere das Brett
+                    } else {
+                        alert(`Ungültiger Zug für die Figur ${pieces[selectedPiece]}!`);
+                        selectedPiece = null; // Zurücksetzen
+                    }
+                }
             } else {
-                alert(`Du hast die Figur ${pieces[selectedPiece]} bewegt!`);
-                selectedPiece = null; // Zurücksetzen
-            }
-        } else {
-            if (selectedPiece !== null) {
-                alert(`Du hast eine leere Felder ausgewählt!`);
-                selectedPiece = null; // Zurücksetzen
+                if (selectedPiece !== null) {
+                    alert(`Du hast ein leeres Feld ausgewählt!`);
+                    selectedPiece = null; // Zurücksetzen
+                }
             }
         }
-    }
 
-    createBoard();
-</script>
+        function isValidMove(from, to) {
+            // Hier kannst du die Logik für gültige Züge hinzufügen (vereinfacht)
+            return true; // Temporär immer wahr
+        }
+
+        createBoard();
+    </script>
 
 </body>
+
 </html>
