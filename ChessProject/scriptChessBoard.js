@@ -480,3 +480,68 @@ function flipBoard() {
   boardFlipped = !boardFlipped;
   renderBoard();
 }
+
+// ── Tutorial Step Controller ──────────────────────────────────────────────────
+
+const TOTAL_STEPS = 6;
+let currentStep = 1;
+
+function goToStep(n) {
+  if (n < 1 || n > TOTAL_STEPS) return;
+
+  // Hide all steps
+  document.querySelectorAll('.tut-step').forEach(el => el.classList.remove('active'));
+
+  // Show target
+  const target = document.getElementById('step-' + n);
+  if (target) target.classList.add('active');
+
+  // Update progress dots
+  document.querySelectorAll('.prog-dot').forEach((dot, i) => {
+    dot.classList.toggle('done',    i + 1 < n);
+    dot.classList.toggle('current', i + 1 === n);
+    dot.classList.remove('done');
+    if (i + 1 < n)  dot.classList.add('done');
+    if (i + 1 === n) dot.classList.add('current');
+  });
+
+  // Update step counter
+  document.getElementById('step-counter').textContent = n + ' / ' + TOTAL_STEPS;
+
+  // Buttons
+  document.getElementById('btn-prev').disabled = (n === 1);
+  const nextBtn = document.getElementById('btn-next');
+  if (n === TOTAL_STEPS) {
+    nextBtn.textContent = '✓ Fertig';
+    nextBtn.classList.add('btn-done');
+  } else {
+    nextBtn.textContent = 'Weiter ▶';
+    nextBtn.classList.remove('btn-done');
+  }
+
+  currentStep = n;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextStep() {
+  if (currentStep === TOTAL_STEPS) {
+    window.location.href = 'playground.html';
+    return;
+  }
+  goToStep(currentStep + 1);
+}
+
+function prevStep() {
+  goToStep(currentStep - 1);
+}
+
+// Loader
+window.addEventListener('load', () => {
+  const loader  = document.getElementById('loader');
+  const content = document.getElementById('content');
+  setTimeout(() => {
+    loader.style.display   = 'none';
+    content.style.display  = 'block';
+    goToStep(1);
+  }, 400);
+});
