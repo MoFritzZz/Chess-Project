@@ -1,160 +1,427 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schach Grundlagen Tutorial</title>
-    <style>
-        body {
-            font-family: 'Georgia', serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f8f8f8;
-            text-align: center;
-        }
-
-        h1,
-        h2 {
-            color: #4a2c2c;
-        }
-
-        .board {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            width: 400px;
-            border: 2px solid #4a2c2c;
-            margin: 20px auto;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .square {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-        }
-
-        .white {
-            background-color: #eee;
-        }
-
-        .black {
-            background-color: #333;
-            color: #fff;
-        }
-
-        .piece {
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .piece:hover {
-            transform: scale(1.2);
-        }
-
-        .info {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="https://img.icons8.com/color/512/chess-com.png">
+  <link rel="stylesheet" href="styleChessBoard.css">
+  <link rel="stylesheet" href="styleTutorial.css">
+  <script src="scriptsTutorial.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Tutorial – ChessHelper</title>
 </head>
-
 <body>
 
-    <h1>Schach Grundlagen Tutorial</h1>
-    <p>Hier lernst du die Grundzüge des Schachspiels und kannst sie direkt ausprobieren!</p>
 
-    <h2>Schachbrett</h2>
-    <div class="board" id="chessboard"></div>
+<a class="mainfont" href="index.html">ChessHelper</a>
 
-    <div class="info">
-        <h2>Schachfiguren und ihre Bewegungen</h2>
-        <ul style="list-style-type: none; padding: 0;">
-            <li><strong>♔ König:</strong> Kann ein Feld in jede Richtung ziehen.</li>
-            <li><strong>♕ Dame:</strong> Kann beliebig viele Felder in jede Richtung ziehen.</li>
-            <li><strong>♖ Turm:</strong> Kann beliebig viele Felder horizontal oder vertikal ziehen.</li>
-            <li><strong>♗ Läufer:</strong> Kann beliebig viele Felder diagonal ziehen.</li>
-            <li><strong>♘ Springer:</strong> Zieht in einem "L"-förmigen Muster.</li>
-            <li><strong>♙ Bauer:</strong> Zieht ein Feld vorwärts, schlägt diagonal.</li>
-        </ul>
+<div id="content" style="display:none;">
+
+  <!-- PROGRESS BAR -->
+  <div class="tut-progress-bar">
+    <div class="prog-dots">
+      <div class="prog-dot current" onclick="goToStep(1)" title="Einführung"></div>
+      <div class="prog-line"></div>
+      <div class="prog-dot" onclick="goToStep(2)" title="Das Brett"></div>
+      <div class="prog-line"></div>
+      <div class="prog-dot" onclick="goToStep(3)" title="Die Figuren"></div>
+      <div class="prog-line"></div>
+      <div class="prog-dot" onclick="goToStep(4)" title="Zugregeln"></div>
+      <div class="prog-line"></div>
+      <div class="prog-dot" onclick="goToStep(5)" title="Schach &amp; Matt"></div>
+      <div class="prog-line"></div>
+      <div class="prog-dot" onclick="goToStep(6)" title="Strategie"></div>
+    </div>
+    <span id="step-counter" class="prog-counter">1 / 6</span>
+  </div>
+
+  <div class="tut-wrapper">
+
+    <!-- STEP 1 -->
+    <div class="tut-step" id="step-1">
+      <div class="tut-header">
+        <span class="step-badge">Schritt 1</span>
+        <h1 class="tut-title">Willkommen beim Chess-Tutorial</h1>
+        <p class="tut-subtitle">Lerne Schritt für Schritt alles, was du für dein erstes Spiel brauchst.</p>
+      </div>
+      <div class="tut-grid">
+        <div class="panel-box tut-card">
+          <div class="panel-title">Was ist Schach?</div>
+          <div class="tut-card-body">
+            <p>Schach ist ein strategisches Brettspiel für <strong>zwei Spieler</strong>. Jeder Spieler steuert 16 Figuren auf einem 8×8-Feld und versucht, den König des Gegners <strong>schachmatt</strong> zu setzen.</p>
+            <p>Das Spiel existiert seit mehr als 1 500 Jahren und gilt als eines der komplexesten und faszinierendsten Spiele der Welt.</p>
+            <div class="tut-highlight">
+              <span class="hi-icon">♟</span>
+              <span>Über <strong>600 Millionen</strong> Menschen spielen regelmäßig Schach.</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Was wirst du lernen?</div>
+          <div class="tut-card-body">
+            <ul class="tut-list">
+              <li><span class="check">✓</span> Aufbau des Schachbretts</li>
+              <li><span class="check">✓</span> Alle 6 Figuren und ihre Zugregeln</li>
+              <li><span class="check">✓</span> Schach, Schachmatt &amp; Patt</li>
+              <li><span class="check">✓</span> Grundlegende Strategien</li>
+              <li><span class="check accent">→</span> Danach: direkt im Playground üben!</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel-box tut-card tut-card-wide">
+          <div class="panel-title">Spielziel</div>
+          <div class="tut-card-body split-card">
+            <div>
+              <p>Das Ziel ist es, den gegnerischen König in eine Lage zu bringen, aus der er <strong>nicht mehr entkommen</strong> kann – das nennt man <em>Schachmatt</em>.</p>
+              <p>Der König wird dabei nie wirklich „geschlagen". Sobald Schachmatt droht, endet die Partie sofort.</p>
+            </div>
+            <div class="piece-showcase">
+              <span class="big-piece">♔</span>
+              <span class="piece-label">Der König – wertvollste Figur</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <h2>Bewege die Figuren</h2>
-    <p>Klicke auf eine Figur, um sie auszuwählen, und klicke dann auf ein Feld, um sie zu bewegen!</p>
+    <!-- STEP 2 -->
+    <div class="tut-step" id="step-2">
+      <div class="tut-header">
+        <span class="step-badge">Schritt 2</span>
+        <h1 class="tut-title">Das Schachbrett</h1>
+        <p class="tut-subtitle">Das Spielfeld verstehen – Reihen, Linien und die richtige Aufstellung.</p>
+      </div>
+      <div class="tut-grid">
+        <div class="panel-box tut-card tut-card-wide">
+          <div class="panel-title">Aufbau des Bretts</div>
+          <div class="tut-card-body split-card">
+            <div>
+              <p>Das Schachbrett hat <strong>64 Felder</strong> in einem 8×8-Raster, abwechselnd hell und dunkel. Die Felder werden durch <strong>Koordinaten</strong> bezeichnet:</p>
+              <ul class="tut-list" style="margin-top:10px;">
+                <li><span class="check">→</span> <strong>Linien (a–h)</strong>: senkrechte Spalten</li>
+                <li><span class="check">→</span> <strong>Reihen (1–8)</strong>: waagrechte Zeilen</li>
+                <li><span class="check">→</span> Jedes Feld hat eine eindeutige Adresse, z. B. <code>e4</code></li>
+              </ul>
+              <div class="tut-highlight" style="margin-top:16px;">
+                <span class="hi-icon">♟</span>
+                <span>Das Brett wird so hingestellt, dass das untere rechte Feld <strong>hell</strong> ist.</span>
+              </div>
+            </div>
+            <div class="board-mini-wrap">
+              <img src="assets/img/portfolio/board.png" alt="Schachbrett" class="tut-img">
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Startaufstellung</div>
+          <div class="tut-card-body">
+            <p>Je <strong>16 Figuren</strong> pro Seite:</p>
+            <div class="setup-table">
+              <div class="setup-row header-row"><span>Reihe</span><span>Inhalt</span></div>
+              <div class="setup-row"><span class="rnum">1</span><span>♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ – Hauptfiguren (Weiß)</span></div>
+              <div class="setup-row"><span class="rnum">2</span><span>♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙ – Bauern (Weiß)</span></div>
+              <div class="setup-row muted"><span class="rnum">3–6</span><span>Leer zu Beginn</span></div>
+              <div class="setup-row"><span class="rnum">7</span><span>♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟ – Bauern (Schwarz)</span></div>
+              <div class="setup-row"><span class="rnum">8</span><span>♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜ – Hauptfiguren (Schwarz)</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Merkhilfe</div>
+          <div class="tut-card-body">
+            <p>Die <strong>Dame</strong> steht immer auf ihrer eigenen Farbe:</p>
+            <ul class="tut-list" style="margin-top:10px;">
+              <li><span class="check">♕</span> Weiße Dame → helles Feld (d1)</li>
+              <li><span class="check">♛</span> Schwarze Dame → dunkles Feld (d8)</li>
+            </ul>
+            <div class="tut-highlight" style="margin-top:16px;">
+              <span class="hi-icon">💡</span>
+              <span>Merkhilfe: <strong>„Dame auf ihrer Farbe"</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="footer">© 2026 Nostalgisches Schach Tutorial</div>
+    <!-- STEP 3 -->
+    <div class="tut-step" id="step-3">
+      <div class="tut-header">
+        <span class="step-badge">Schritt 3</span>
+        <h1 class="tut-title">Die Figuren</h1>
+        <p class="tut-subtitle">6 verschiedene Figuren – jede mit einzigartigen Fähigkeiten.</p>
+      </div>
+      <div class="tut-grid pieces-grid">
+        <div class="panel-box tut-card piece-card">
+          <div class="panel-title">König ♔</div>
+          <div class="tut-card-body">
+            <div class="piece-row">
+              <span class="med-piece">♔</span>
+              <div>
+                <p>Bewegt sich <strong>ein Feld</strong> in jede Richtung. Darf nie auf ein bedrohtes Feld ziehen.</p>
+                <p>Sonderregel: <strong>Rochade</strong> mit dem Turm.</p>
+                <div class="value-badge">Wert: ∞</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card piece-card">
+          <div class="panel-title">Dame ♕</div>
+          <div class="tut-card-body">
+            <div class="piece-row">
+              <span class="med-piece">♕</span>
+              <div>
+                <p>Stärkste Figur: zieht <strong>beliebig weit</strong> horizontal, vertikal und diagonal.</p>
+                <div class="value-badge accent-badge">Wert: ≈ 9 Punkte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card piece-card">
+          <div class="panel-title">Turm ♖</div>
+          <div class="tut-card-body">
+            <div class="piece-row">
+              <span class="med-piece">♖</span>
+              <div>
+                <p>Zieht <strong>beliebig weit</strong> horizontal und vertikal. Stark im Endspiel und auf offenen Linien.</p>
+                <div class="value-badge accent-badge">Wert: ≈ 5 Punkte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card piece-card">
+          <div class="panel-title">Läufer ♗</div>
+          <div class="tut-card-body">
+            <div class="piece-row">
+              <span class="med-piece">♗</span>
+              <div>
+                <p>Zieht <strong>beliebig weit diagonal</strong> – bleibt immer auf seiner Feldfarbe.</p>
+                <div class="value-badge mid-badge">Wert: ≈ 3 Punkte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card piece-card">
+          <div class="panel-title">Springer ♘</div>
+          <div class="tut-card-body">
+            <div class="piece-row">
+              <span class="med-piece">♘</span>
+              <div>
+                <p>Bewegt sich in einem <strong>L</strong>: 2+1 Felder. Einzige Figur, die <strong>überspringen</strong> kann.</p>
+                <div class="value-badge mid-badge">Wert: ≈ 3 Punkte</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card piece-card">
+          <div class="panel-title">Bauer ♙</div>
+          <div class="tut-card-body">
+            <div class="piece-row">
+              <span class="med-piece">♙</span>
+              <div>
+                <p>Zieht <strong>ein Feld vorwärts</strong>, schlägt <strong>diagonal</strong>. Beim ersten Zug optional zwei Felder.</p>
+                <div class="value-badge low-badge">Wert: ≈ 1 Punkt</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script>
-        const board = document.getElementById('chessboard');
-        const pieces = [
-            '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖',
-            '♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙',
-            '', '', '', '', '', '', '', '',
-            '', '', '', '', '', '', '', '',
-            '', '', '', '', '', '', '', '',
-            '', '', '', '', '', '', '', '',
-            '♟', '♟', '♟', '♟', '♟', '♟', '♟', '♟',
-            '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'
-        ];
+    <!-- STEP 4 -->
+    <div class="tut-step" id="step-4">
+      <div class="tut-header">
+        <span class="step-badge">Schritt 4</span>
+        <h1 class="tut-title">Zugregeln &amp; Sonderzüge</h1>
+        <p class="tut-subtitle">Regeln, die du kennen musst – und drei besondere Züge.</p>
+      </div>
+      <div class="tut-grid">
+        <div class="panel-box tut-card">
+          <div class="panel-title">Grundregeln</div>
+          <div class="tut-card-body">
+            <ul class="tut-list">
+              <li><span class="check">→</span> Weiß beginnt immer.</li>
+              <li><span class="check">→</span> Pro Zug darf genau <strong>eine</strong> Figur bewegt werden.</li>
+              <li><span class="check">→</span> Eine Figur schlägt, indem sie das gegnerische Feld betritt.</li>
+              <li><span class="check">→</span> Schach <strong>muss</strong> im nächsten Zug abgewehrt werden.</li>
+              <li><span class="check">→</span> Der eigene König darf nie im Schach stehen bleiben.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Sonderzug: Rochade</div>
+          <div class="tut-card-body">
+            <p>König und Turm tauschen gleichzeitig die Position – der einzige Zug mit zwei Figuren.</p>
+            <div class="rule-box">
+              <div class="rule-row"><span class="rule-icon">🏰</span><span><strong>Kurze Rochade</strong> (O-O): Königsseite</span></div>
+              <div class="rule-row"><span class="rule-icon">🏰</span><span><strong>Lange Rochade</strong> (O-O-O): Damenseite</span></div>
+            </div>
+            <div class="tut-highlight" style="margin-top:12px;">
+              <span class="hi-icon">⚠</span>
+              <span>Verboten wenn König oder Turm bereits gezogen haben.</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Sonderzug: En passant</div>
+          <div class="tut-card-body">
+            <p>Schlägt ein Bauer im ersten Zug zwei Felder vor, kann ihn ein gegnerischer Bauer <strong>im Vorbeigehen</strong> schlagen – aber <em>nur sofort im nächsten Zug</em>.</p>
+            <div class="tut-highlight" style="margin-top:12px;">
+              <span class="hi-icon">💡</span>
+              <span>„En passant" = Französisch für „im Vorbeigehen".</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Sonderzug: Bauernumwandlung</div>
+          <div class="tut-card-body">
+            <p>Erreicht ein Bauer die letzte Reihe, muss er sofort umgewandelt werden:</p>
+            <div class="promo-row">
+              <span class="promo-piece">♕</span>
+              <span class="promo-piece">♖</span>
+              <span class="promo-piece">♗</span>
+              <span class="promo-piece">♘</span>
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color:var(--text-secondary);">In der Praxis wird fast immer die Dame gewählt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        function createBoard() {
-            for (let i = 0; i < 64; i++) {
-                const square = document.createElement('div');
-                square.className = (Math.floor(i / 8) + i) % 2 === 0 ? 'square white' : 'square black';
-                square.innerHTML = pieces[i] ? `<span class="piece">${pieces[i]}</span>` : '';
-                square.addEventListener('click', () => selectPiece(i));
-                board.appendChild(square);
-            }
-        }
+    <!-- STEP 5 -->
+    <div class="tut-step" id="step-5">
+      <div class="tut-header">
+        <span class="step-badge">Schritt 5</span>
+        <h1 class="tut-title">Schach, Schachmatt &amp; Patt</h1>
+        <p class="tut-subtitle">Die drei wichtigsten Spielsituationen – und wie sie sich unterscheiden.</p>
+      </div>
+      <div class="tut-grid">
+        <div class="panel-box tut-card tut-card-wide">
+          <div class="panel-title">Schach ⚔</div>
+          <div class="tut-card-body split-card">
+            <div>
+              <p>Ein König steht im <strong>Schach</strong>, wenn er von einer gegnerischen Figur <strong>direkt bedroht</strong> wird.</p>
+              <p style="margin-top:10px;">Möglichkeiten zur Abwehr:</p>
+              <div class="rule-box" style="margin-top:8px;">
+                <div class="rule-row"><span class="rule-icon">1.</span><span>König auf ein sicheres Feld bewegen.</span></div>
+                <div class="rule-row"><span class="rule-icon">2.</span><span>Die angreifende Figur schlagen.</span></div>
+                <div class="rule-row"><span class="rule-icon">3.</span><span>Eine eigene Figur dazwischen stellen.</span></div>
+              </div>
+            </div>
+            <div class="piece-showcase">
+              <span class="big-piece">⚠</span>
+              <span class="piece-label">Schach muss sofort abgewehrt werden!</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Schachmatt = Sieg</div>
+          <div class="tut-card-body">
+            <p><strong>Schachmatt</strong>: Der König steht im Schach und es gibt keinen legalen Zug zur Rettung.</p>
+            <div class="result-badge win">Schachmatt = Sieg 🏆</div>
+            <div class="tut-img-wrap">
+              <img src="assets/img/portfolio/checkmate.png" alt="Schachmatt" class="tut-img">
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Patt = Remis</div>
+          <div class="tut-card-body">
+            <p><strong>Patt</strong>: Nicht im Schach, aber kein legaler Zug möglich → unentschieden.</p>
+            <div class="result-badge draw">Patt = Remis 🤝</div>
+            <div class="tut-highlight" style="margin-top:12px;">
+              <span class="hi-icon">⚠</span>
+              <span>Patt ist eine häufige Falle – auch mit Materialvorteil!</span>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Weitere Remisarten</div>
+          <div class="tut-card-body">
+            <ul class="tut-list">
+              <li><span class="check">→</span> <strong>50-Züge-Regel</strong></li>
+              <li><span class="check">→</span> <strong>Dreifache Stellungswiederholung</strong></li>
+              <li><span class="check">→</span> <strong>Gegenseitige Einigung</strong></li>
+              <li><span class="check">→</span> <strong>Zu wenig Material</strong> (z. B. König gegen König)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        let selectedPiece = null;
+    <!-- STEP 6 -->
+    <div class="tut-step" id="step-6">
+      <div class="tut-header">
+        <span class="step-badge">Schritt 6</span>
+        <h1 class="tut-title">Grundlegende Strategie</h1>
+        <p class="tut-subtitle">Vier goldene Prinzipien für den Spielbeginn – und taktische Muster.</p>
+      </div>
+      <div class="tut-grid">
+        <div class="panel-box tut-card tut-card-wide">
+          <div class="panel-title">Die 4 Eröffnungsprinzipien</div>
+          <div class="tut-card-body">
+            <div class="principles-grid">
+              <div class="principle-item">
+                <span class="p-num">1</span>
+                <div><strong>Zentrum kontrollieren</strong><p>Besetze oder kontrolliere e4, e5, d4, d5. Wer das Zentrum beherrscht, kontrolliert das Spiel.</p></div>
+              </div>
+              <div class="principle-item">
+                <span class="p-num">2</span>
+                <div><strong>Figuren entwickeln</strong><p>Bringe Springer und Läufer früh ins Spiel. Jede Figur sollte aktiv beteiligt sein.</p></div>
+              </div>
+              <div class="principle-item">
+                <span class="p-num">3</span>
+                <div><strong>König sichern</strong><p>Rochiere früh. Ein ungeschützter König in der Mitte ist in ständiger Gefahr.</p></div>
+              </div>
+              <div class="principle-item">
+                <span class="p-num">4</span>
+                <div><strong>Keine Tempi verschwenden</strong><p>Ziehe jede Figur möglichst nur einmal in der Eröffnung.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Taktische Muster</div>
+          <div class="tut-card-body">
+            <ul class="tut-list">
+              <li><span class="check accent">★</span> <strong>Gabel:</strong> Gleichzeitiger Angriff auf zwei Figuren.</li>
+              <li><span class="check accent">★</span> <strong>Spieß:</strong> Wertvollere Figur wird zur Bewegung gezwungen.</li>
+              <li><span class="check accent">★</span> <strong>Fesselung:</strong> Figur kann nicht ziehen, da wichtigere dahinter bedroht.</li>
+              <li><span class="check accent">★</span> <strong>Abzugsangriff:</strong> Verdeckte Drohung wird durch Wegziehen freigelegt.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel-box tut-card">
+          <div class="panel-title">Figurenwerte</div>
+          <div class="tut-card-body">
+            <div class="value-table">
+              <div class="vt-row"><span class="big-p">♙</span><span>Bauer</span><span class="val">1</span></div>
+              <div class="vt-row"><span class="big-p">♘</span><span>Springer</span><span class="val">3</span></div>
+              <div class="vt-row"><span class="big-p">♗</span><span>Läufer</span><span class="val">3</span></div>
+              <div class="vt-row"><span class="big-p">♖</span><span>Turm</span><span class="val">5</span></div>
+              <div class="vt-row"><span class="big-p">♕</span><span>Dame</span><span class="val">9</span></div>
+              <div class="vt-row"><span class="big-p">♔</span><span>König</span><span class="val">∞</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-box tut-card tut-cta-card">
+          <div class="tut-card-body cta-body">
+            <span class="cta-icon">♟</span>
+            <h2 class="cta-title">Du bist bereit!</h2>
+            <p class="cta-sub">Du hast alle Grundlagen gelernt. Starte jetzt dein erstes Spiel im Playground!</p>
+            <button class="btn btn-primary cta-btn" onclick="nextStep()">Zum Playground ▶</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        function selectPiece(index) {
-            const piece = pieces[index];
-            if (piece) {
-                if (selectedPiece === null) {
-                    selectedPiece = index;
-                    alert(`Du hast die Figur ${piece} ausgewählt! Klicke auf ein Feld, um sie zu bewegen.`);
-                } else {
-                    if (isValidMove(selectedPiece, index)) {
-                        pieces[index] = pieces[selectedPiece];
-                        pieces[selectedPiece] = '';
-                        selectedPiece = null;
-                        createBoard(); // Aktualisiere das Brett
-                    } else {
-                        alert(`Ungültiger Zug für die Figur ${pieces[selectedPiece]}!`);
-                        selectedPiece = null; // Zurücksetzen
-                    }
-                }
-            } else {
-                if (selectedPiece !== null) {
-                    alert(`Du hast ein leeres Feld ausgewählt!`);
-                    selectedPiece = null; // Zurücksetzen
-                }
-            }
-        }
+    <!-- NAVIGATION -->
+    <div class="tut-nav">
+      <button id="btn-prev" class="btn btn-secondary" onclick="prevStep()" disabled>◀ Zurück</button>
+      <button id="btn-next" class="btn btn-primary" onclick="nextStep()">Weiter ▶</button>
+    </div>
 
-        function isValidMove(from, to) {
-            // Hier kannst du die Logik für gültige Züge hinzufügen (vereinfacht)
-            return true; // Temporär immer wahr
-        }
-
-        createBoard();
-    </script>
+  </div>
+</div>
 
 </body>
-
 </html>
