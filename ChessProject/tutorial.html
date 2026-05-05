@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="https://img.icons8.com/color/512/chess-com.png">
-    <title>Tutorial</title>
     <title>Schach Grundlagen Tutorial</title>
     <style>
         body {
@@ -37,6 +36,7 @@
             align-items: center;
             justify-content: center;
             font-size: 32px;
+            box-sizing: border-box;
         }
 
         .white {
@@ -48,9 +48,14 @@
             color: #fff;
         }
 
+        .selected {
+            outline: 3px solid yellow;
+        }
+
         .piece {
             cursor: pointer;
             transition: transform 0.2s;
+            user-select: none;
         }
 
         .piece:hover {
@@ -71,6 +76,12 @@
             font-size: 14px;
             color: #666;
         }
+
+        #status {
+            margin-top: 15px;
+            font-size: 18px;
+            color: white;
+        }
     </style>
 </head>
 
@@ -80,6 +91,7 @@
 
     <h2>Schachbrett</h2>
     <div class="board" id="chessboard"></div>
+    <div id="status">Wähle eine Figur aus.</div>
 
     <div class="info">
         <h2>Schachfiguren und ihre Bewegungen</h2>
@@ -93,11 +105,12 @@
         </ul>
     </div>
 
-
     <div class="footer">© 2026 Nostalgisches Schach Tutorial</div>
 
     <script>
         const board = document.getElementById('chessboard');
+        const statusText = document.getElementById('status');
+
         const pieces = [
             '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖',
             '♙', '♙', '♙', '♙', '♙', '♙', '♙', '♙',
@@ -109,46 +122,65 @@
             '♜', '♞', '♝', '♛', '♚', '♝', '♞', '♜'
         ];
 
+        let selectedPiece = null;
+
         function createBoard() {
+            board.innerHTML = ''; // wichtig: altes Brett löschen
+
             for (let i = 0; i < 64; i++) {
                 const square = document.createElement('div');
                 square.className = (Math.floor(i / 8) + i) % 2 === 0 ? 'square white' : 'square black';
+
+                if (selectedPiece === i) {
+                    square.classList.add('selected');
+                }
+
                 square.innerHTML = pieces[i] ? `<span class="piece">${pieces[i]}</span>` : '';
                 square.addEventListener('click', () => selectPiece(i));
                 board.appendChild(square);
             }
         }
 
-        let selectedPiece = null;
-
         function selectPiece(index) {
-            const piece = pieces[index];
-            if (piece) {
-                if (selectedPiece === null) {
+            const clickedPiece = pieces[index];
+
+            // Noch nichts ausgewählt
+            if (selectedPiece === null) {
+                if (clickedPiece) {
                     selectedPiece = index;
-                    alert(`Du hast die Figur ${piece} ausgewählt! Klicke auf ein Feld, um sie zu bewegen.`);
-                } else {
-                    if (isValidMove(selectedPiece, index)) {
-                        pieces[index] = pieces[selectedPiece];
-                        pieces[selectedPiece] = '';
-                        selectedPiece = null;
-                        createBoard(); // Aktualisiere das Brett
-                    } else {
-                        alert(`Ungültiger Zug für die Figur ${pieces[selectedPiece]}!`);
-                        selectedPiece = null; // Zurücksetzen
-                    }
+                    statusText.textContent = `Ausgewählt: ${clickedPiece}`;
+                    createBoard();
                 }
+                return;
+            }
+
+            // Wenn man dieselbe Figur nochmal klickt -> Auswahl aufheben
+            if (selectedPiece === index) {
+                selectedPiece = null;
+                statusText.textContent = 'Auswahl aufgehoben.';
+                createBoard();
+                return;
+            }
+
+            // Zug versuchen
+            if (isValidMove(selectedPiece, index)) {
+                pieces[index] = pieces[selectedPiece];
+                pieces[selectedPiece] = '';
+                selectedPiece = null;
+                statusText.textContent = 'Zug ausgeführt.';
+                createBoard();
             } else {
-                if (selectedPiece !== null) {
-                    alert(`Du hast ein leeres Feld ausgewählt!`);
-                    selectedPiece = null; // Zurücksetzen
-                }
+                statusText.textContent = 'Ungültiger Zug.';
+                selectedPiece = null;
+                createBoard();
             }
         }
 
         function isValidMove(from, to) {
-            // Hier kannst du die Logik für gültige Züge hinzufügen (vereinfacht)
-            return true; // Temporär immer wahr
+            // Noch vereinfacht:
+            // verhindert nur, dass man auf dasselbe Feld zieht
+            if (from === to) return false;
+            return true;
         }
 
         createBoard();

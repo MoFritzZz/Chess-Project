@@ -418,3 +418,10 @@ body {
 }
 
 
+
+/* KI-Button aktiv */
+.btn-ai-active {
+  background: #4a7c3f !important;
+  color: #fff !important;
+  border-color: #3a6230 !important;
+}

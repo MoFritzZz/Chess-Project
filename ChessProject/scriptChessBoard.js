@@ -10,14 +10,14 @@ window.addEventListener("load", () => {
 });
 
 // =====================================================
-// LAYOUT SCALER
+// LAYOUT for chessboard
 // =====================================================
 
 function scaleLayout() {
   const scaler = document.getElementById('game-scaler');
   if (!scaler) return;
 
-  // Reset so we measure true natural size
+  
   scaler.style.transform = 'none';
   scaler.style.top  = '0px';
   scaler.style.left = '0px';
@@ -27,10 +27,10 @@ function scaleLayout() {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
 
-  // Scale down to fit, never scale up beyond 1
+  
   const scale  = Math.min(vw / W, vh / H, 1);
 
-  // Center: offset = (viewport - scaled size) / 2
+  
   const left = Math.round((vw - W * scale) / 2);
   const top  = Math.round((vh - H * scale) / 2);
 
@@ -326,6 +326,10 @@ function executeMove(fromR, fromC, toR, toC, move, promoType) {
     }, 300);
   }
   updateStatus();
+  // KI-Zug auslösen wenn Modus aktiv und Schwarz am Zug
+  if (aiMode && !gameOver && turn === 'black') {
+    setTimeout(doAIMove, 400);
+  }
 }
 
 function showGameOver(winner, reason) {
@@ -481,67 +485,116 @@ function flipBoard() {
   renderBoard();
 }
 
-// ── Tutorial Step Controller ──────────────────────────────────────────────────
+// =====================================================
+// KI-MODUS (chess-api.com)
+// =====================================================
 
-const TOTAL_STEPS = 6;
-let currentStep = 1;
+let aiMode = false;
+let aiThinking = false;
 
-function goToStep(n) {
-  if (n < 1 || n > TOTAL_STEPS) return;
-
-  // Hide all steps
-  document.querySelectorAll('.tut-step').forEach(el => el.classList.remove('active'));
-
-  // Show target
-  const target = document.getElementById('step-' + n);
-  if (target) target.classList.add('active');
-
-  // Update progress dots
-  document.querySelectorAll('.prog-dot').forEach((dot, i) => {
-    dot.classList.toggle('done',    i + 1 < n);
-    dot.classList.toggle('current', i + 1 === n);
-    dot.classList.remove('done');
-    if (i + 1 < n)  dot.classList.add('done');
-    if (i + 1 === n) dot.classList.add('current');
-  });
-
-  // Update step counter
-  document.getElementById('step-counter').textContent = n + ' / ' + TOTAL_STEPS;
-
-  // Buttons
-  document.getElementById('btn-prev').disabled = (n === 1);
-  const nextBtn = document.getElementById('btn-next');
-  if (n === TOTAL_STEPS) {
-    nextBtn.textContent = '✓ Fertig';
-    nextBtn.classList.add('btn-done');
+// Wandelt das aktuelle Brett in einen FEN-String um
+function boardToFEN() {
+  const pieceMap = {
+    wK:'K', wQ:'Q', wR:'R', wB:'B', wN:'N', wP:'P',
+    bK:'k', bQ:'q', bR:'r', bB:'b', bN:'n', bP:'p'
+  };
+  let fen = '';
+  for (let r = 0; r < 8; r++) {
+    let empty = 0;
+    for (let c = 0; c < 8; c++) {
+      const p = board[r][c];
+      if (!p) {
+        empty++;
+      } else {
+        if (empty > 0) { fen += empty; empty = 0; }
+        fen += pieceMap[p.color[0] + p.type];
+      }
+    }
+    if (empty > 0) fen += empty;
+    if (r < 7) fen += '/';
+  }
+  // Wer ist am Zug
+  fen += ' ' + (turn === 'white' ? 'w' : 'b');
+  // Rochaderechte
+  let castle = '';
+  if (castlingRights.white.kside) castle += 'K';
+  if (castlingRights.white.qside) castle += 'Q';
+  if (castlingRights.black.kside) castle += 'k';
+  if (castlingRights.black.qside) castle += 'q';
+  fen += ' ' + (castle || '-');
+  // En-passant-Zielfeld
+  if (enPassantTarget) {
+    fen += ' ' + 'abcdefgh'[enPassantTarget.col] + (8 - enPassantTarget.row);
   } else {
-    nextBtn.textContent = 'Weiter ▶';
-    nextBtn.classList.remove('btn-done');
+    fen += ' -';
   }
-
-  currentStep = n;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Halbzugzähler und Zugnummer (vereinfacht)
+  fen += ' 0 ' + (Math.floor(moveHistory.length / 2) + 1);
+  return fen;
 }
 
-function nextStep() {
-  if (currentStep === TOTAL_STEPS) {
-    window.location.href = 'playground.html';
-    return;
+// Holt den nächsten KI-Zug von chess-api.com
+async function fetchAIMove() {
+  const fen = boardToFEN();
+  try {
+    const res = await fetch('https://chess-api.com/v1', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fen, depth: 5 })
+    });
+    const data = await res.json();
+    return data.move || null; // z.B. "e7e5" oder "e7e5q"
+  } catch (err) {
+    console.error('chess-api.com Fehler:', err);
+    return null;
   }
-  goToStep(currentStep + 1);
 }
 
-function prevStep() {
-  goToStep(currentStep - 1);
+// Führt den KI-Zug aus
+async function doAIMove() {
+  if (aiThinking || gameOver) return;
+  aiThinking = true;
+  setAIStatus('KI denkt…');
+
+  const moveStr = await fetchAIMove();
+  aiThinking = false;
+
+  if (!moveStr || moveStr.length < 4) { setAIStatus(''); return; }
+
+  const fromCol = moveStr.charCodeAt(0) - 97;
+  const fromRow = 8 - parseInt(moveStr[1]);
+  const toCol   = moveStr.charCodeAt(2) - 97;
+  const toRow   = 8 - parseInt(moveStr[3]);
+  const promo   = moveStr[4] ? moveStr[4].toUpperCase() : null;
+
+  const moves = legalMoves(fromRow, fromCol);
+  const move  = moves.find(m => m.row === toRow && m.col === toCol);
+  if (move) {
+    executeMove(fromRow, fromCol, toRow, toCol, move, promo);
+    renderBoard();
+  }
+  setAIStatus('');
 }
 
-// Loader
-window.addEventListener('load', () => {
-  const loader  = document.getElementById('loader');
-  const content = document.getElementById('content');
-  setTimeout(() => {
-    loader.style.display   = 'none';
-    content.style.display  = 'block';
-    goToStep(1);
-  }, 400);
-});
+// Zeigt KI-Status in der UI an (falls vorhanden)
+function setAIStatus(text) {
+  const el = document.getElementById('ai-status');
+  if (el) el.textContent = text;
+}
+
+// KI-Modus umschalten
+function toggleAI() {
+  aiMode = !aiMode;
+  const btn = document.getElementById('btn-ai');
+  if (btn) {
+    btn.textContent = aiMode ? '🤖 KI aus' : '🤖 vs KI';
+    btn.classList.toggle('btn-ai-active', aiMode);
+  }
+  setAIStatus('');
+  // Falls Schwarz dran ist und KI gerade aktiviert wurde
+  if (aiMode && turn === 'black' && !gameOver) {
+    setTimeout(doAIMove, 400);
+  }
+}
+
+// Hinweis: Tutorial-Logik liegt in sciptTutorial.js (eigenständiges Script)

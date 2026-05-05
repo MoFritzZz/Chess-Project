@@ -1,0 +1,71 @@
+{
+  "games": [
+    {
+      "date": "2026-05-05T08:37:37.541Z",
+      "fen": "rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2",
+      "moves": [
+        "e4",
+        "d5"
+      ],
+      "result": "laufend",
+      "id": "-j7QyVoRASQ"
+    },
+    {
+      "id": "0utYRRyKa7E",
+      "date": "2026-05-05T08:39:55.705Z",
+      "fen": "rnbqkbnr/ppppp1pp/8/5P2/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2",
+      "moves": [
+        "e4",
+        "f5",
+        "exf5"
+      ],
+      "result": "laufend"
+    },
+    {
+      "id": "TgLDojrvdzM",
+      "date": "2026-05-05T08:41:15.632Z",
+      "fen": "rnbqkbnr/pppp1ppp/8/4p3/3P4/8/PPP1PPPP/RNBQKBNR w KQkq e6 0 2",
+      "moves": [
+        "d4",
+        "e5"
+      ],
+      "result": "laufend"
+    },
+    {
+      "date": "2026-05-05T08:43:26.073Z",
+      "fen": "rnbqkbnr/ppppp1pp/8/5P2/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2",
+      "moves": [
+        "e4",
+        "f5",
+        "exf5"
+      ],
+      "result": "laufend",
+      "id": "g7sEzFga91M"
+    },
+    {
+      "date": "2026-05-05T08:45:14.296Z",
+      "fen": "rnbqkbnr/ppppp1pp/8/5p2/5PP1/8/PPPPP2P/RNBQKBNR b KQkq g3 0 2",
+      "moves": [
+        "f4",
+        "f5",
+        "g4"
+      ],
+      "result": "laufend",
+      "id": "l4IQNZUyp_c"
+    },
+    {
+      "date": "2026-05-05T08:45:53.812Z",
+      "fen": "rnbqkbnr/ppp1pppp/8/8/2p1P3/8/PP1P1PPP/RNBQKBNR w KQkq - 0 3",
+      "moves": [
+        "e4",
+        "d5",
+        "c4",
+        "dxc4"
+      ],
+      "result": "laufend",
+      "id": "JNPmN03Fh68"
+    }
+  ],
+  "moves": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
