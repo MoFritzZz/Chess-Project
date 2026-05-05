@@ -587,7 +587,7 @@ function toggleAI() {
   aiMode = !aiMode;
   const btn = document.getElementById('btn-ai');
   if (btn) {
-    btn.textContent = aiMode ? '🤖 KI aus' : '🤖 vs KI';
+    btn.textContent = aiMode ? 'KI aus' : 'You vs KI';
     btn.classList.toggle('btn-ai-active', aiMode);
   }
   setAIStatus('');
